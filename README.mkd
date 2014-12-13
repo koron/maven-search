@@ -1,0 +1,41 @@
+# Search maven artifact in CLI
+
+Install
+
+    $ go get github.com/koron/maven-search
+
+Run
+
+    $ maven-search junit
+
+Then you'll get like this.
+
+    junit:junit:4.12
+    org.technbolts:junit:1.0.1
+    com.groupon.roboremote.roboremoteclient:junit:0.4
+    org.apache.tuscany.sca.samples:junit:2.0
+    org.apache.isis.viewer:junit:0.2.0-incubating
+    com.kenai.nbpwr:junit:4.7-201002241900
+    org.mod4j.org:junit:3.8.2
+    org.codehaus.mevenide:junit:3.1.4
+    org.eclipse.jdt:junit:3.3.0-v20070606-0010
+    junit:junit-dep:4.11
+    junit-addons:junit-addons:1.4
+    junit-doclet:junit-doclet:1.0.2
+    org.jboss.arquillian.junit:arquillian-junit-parent:1.1.5.Final
+    com.googlecode.guice-junit4:guice-junit4-parent:0.2
+    com.pholser:junit-quickcheck:0.4-beta-3
+    pl.javadevelopers.junit:parent:0.8
+    ant:ant-junit:1.6.5
+    org.robovm:robovm-junit-parent:1.0.0-beta-01
+    org.apache.jmeter:ApacheJMeter_junit:2.12
+    com.github.mjeanroy:junit-servers:0.2.2
+
+# Inspired by
+
+*   [maven, browse central repository via command line client](http://stackoverflow.com/questions/14465721/maven-browse-central-repository-via-command-line-client)
+*   [コマンドラインから、maven アーティファクトを検索するには？](http://ja.stackoverflow.com/questions/1581/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%8B%E3%82%89-maven-%E3%82%A2%E3%83%BC%E3%83%86%E3%82%A3%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%82%92%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF)
+
+# License
+
+The BSD 3-Clause License
