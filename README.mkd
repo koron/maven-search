@@ -1,4 +1,4 @@
-# Search maven artifact in CLI
+# Search maven artifacts in CLI
 
 Install
 
