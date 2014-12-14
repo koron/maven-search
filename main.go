@@ -7,27 +7,12 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strconv"
 )
 
-// JSONResponse solrsearch response.
-type JSONResponse struct {
-	Response Response
-}
-
-// Response body.
-type Response struct {
-	Docs []Doc
-}
-
-// Doc shows an artifact.
-type Doc struct {
-	ID            string
-	LatestVersion string
-}
-
-func searchArtifact(q string) error {
+func searchArtifact(q string, n int) error {
 	p := url.Values{
-		"rows": []string{"20"},
+		"rows": []string{strconv.Itoa(n)},
 		"wt":   []string{"json"},
 		"q":    []string{q},
 	}
@@ -40,11 +25,20 @@ func searchArtifact(q string) error {
 	if resp.StatusCode != 200 {
 		return errors.New(resp.Status)
 	}
+	// parse JSON with anonymous struct.
 	d := json.NewDecoder(resp.Body)
-	v := JSONResponse{}
+	var v struct {
+		Response struct {
+			Docs []struct {
+				ID            string
+				LatestVersion string
+			}
+		}
+	}
 	if err := d.Decode(&v); err != nil {
 		return err
 	}
+	// print results.
 	for _, d := range v.Response.Docs {
 		fmt.Println(d.ID + ":" + d.LatestVersion)
 	}
@@ -56,7 +50,7 @@ func main() {
 		fmt.Println("ERROR: need a query string")
 		os.Exit(1)
 	}
-	if err := searchArtifact(os.Args[1]); err != nil {
+	if err := searchArtifact(os.Args[1], 20); err != nil {
 		fmt.Printf("ERROR: %s\n", err)
 		os.Exit(1)
 	}
